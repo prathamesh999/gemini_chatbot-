@@ -2,9 +2,6 @@
 // npm install @google/generative-ai express
 
 const express = require('express');
-const serverless = require('serverless-http');
-const Server = express();
-const router = express.Router();
 const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
 const dotenv = require('dotenv').config()
 
@@ -71,5 +68,3 @@ app.post('/chat', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
-app.use('/.netlify/functions/server', router);
-module.exports.handler = serverless(app);
